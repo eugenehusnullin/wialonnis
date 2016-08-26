@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<RollingFile name="allAppender" append="false" fileName="logs/wialonnis/all.log"
+			filePattern="logs/wialonnis/all-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="errorAppender" append="false" fileName="logs/wialonnis/error.log"
+			filePattern="logs/wialonnis/error-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="inAppender" append="false" fileName="logs/wialonnis/in.log"
+			filePattern="logs/wialonnis/in-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="outAppender" append="false" fileName="logs/wialonnis/out.log"
+			filePattern="logs/wialonnis/out-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="wialonnis.MainController" level="debug">
+	      		<AppenderRef ref="inAppender" />
+		</Logger>
+		<Logger name="wialonnis.CityGuideSender" level="debug">
+	      		<AppenderRef ref="outAppender" />
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="allAppender" />
+			<AppenderRef ref="errorAppender" level="error" />
+		</Root>
+	</Loggers>
+</Configuration>
